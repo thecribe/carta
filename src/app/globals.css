@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  @apply text-sm text-gray-500
+  /* color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif; */;
+}
+
+.h4 {
+  @apply font-semibold text-black;
+}
+.h2 {
+  @apply font-semibold text-black text-lg;
+}
+.h3 {
+  @apply mt-5;
+}
+
+/* scroll bar  */
+
+.scrolling::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.scrolling::-webkit-scrollbar-track {
+  @apply bg-gray-50 rounded-lg;
+}
+.scrolling::-webkit-scrollbar-thumb {
+  @apply bg-gray-200 rounded-lg cursor-pointer;
+}
+
+.scrolling::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-100;
+}
+
+/* Hamburger  */
+.hamburger {
+  @apply bg-gray-900;
+  height: 3px;
+  width: 35px;
+  position: relative;
+}
+.hamburger::after {
+  @apply bg-gray-900;
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  top: -10px;
+}
+.hamburger::before {
+  @apply bg-gray-900;
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: -10px;
+}
