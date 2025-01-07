@@ -14,6 +14,10 @@
   }
 } */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply text-sm text-gray-500
   /* color: var(--foreground);

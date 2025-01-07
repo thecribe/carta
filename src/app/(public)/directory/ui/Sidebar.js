@@ -7,12 +7,12 @@ export const siderNav = [
   },
   {
     menu: "Institutions",
-    link: "#",
+    link: "/directory/university",
   },
 
   {
     menu: "Cohorts",
-    link: "#",
+    link: "/directory/cohorts",
   },
 ];
 export const adminNav = [
