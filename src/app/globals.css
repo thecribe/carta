@@ -51,7 +51,9 @@ body {
 .scrolling::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-100;
 }
-
+.smooth_transition {
+  @apply transition-all duration-300;
+}
 /* Hamburger  */
 .hamburger {
   @apply bg-gray-900;
@@ -74,4 +76,8 @@ body {
   height: 3px;
   position: absolute;
   bottom: -10px;
+}
+
+.edit-panel-control:hover .edit-panel {
+  @apply block;
 }

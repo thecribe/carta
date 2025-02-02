@@ -1,9 +1,9 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import DisplayFellows from "./DisplayFellows";
-import { getAllFellow } from "@/apiServerActions";
+import { getAllFellow } from "@/utils/fellow";
 
-const Fellows = () => {
+const Fellows = ({ session }) => {
   const [allFellow, setAllFellow] = useState({
     array: [],
     loading: true,
@@ -16,7 +16,7 @@ const Fellows = () => {
       loading: true,
     });
     const getallFellows = async () => {
-      const response = await getAllFellow();
+      const response = await getAllFellow(null, "");
 
       if (!response) {
         setAllFellow({

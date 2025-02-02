@@ -1,5 +1,5 @@
 "use client";
-import { getSearchFellows } from "@/apiServerActions";
+
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
@@ -8,8 +8,10 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { adminNav, siderNav } from "../directory/ui/Sidebar";
 import SearchPage from "./SearchPage";
+import { doUserLogout } from "@/utils/auth";
+import { getAllFellow } from "@/utils/fellow";
 
-const Header = () => {
+const Header = ({ session, key }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchPopUp, setSearchPopUp] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -17,7 +19,7 @@ const Header = () => {
 
   const [searchResult, setSearchResult] = useState({
     array: [],
-    loading: false,
+    loading: true,
     error: false,
   });
   const popRef = useRef(null);
@@ -42,9 +44,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setSearchResult({ ...searchResult, loading: true });
     const handleSearchFilter = async () => {
-      const response = await getSearchFellows(searchInput);
+      const response = await getAllFellow();
 
       if (!response) {
         setSearchInput({
@@ -55,15 +56,30 @@ const Header = () => {
         return null;
       }
 
+      let output = [];
+      if (searchInput !== "") {
+        [...response].forEach((fellow, index) => {
+          if (
+            (fellow.name.firstname + " " + fellow.name.lastname)
+              .toLowerCase()
+              .includes(searchInput)
+          ) {
+            output.push(fellow);
+          }
+        });
+      }
+
       setSearchResult({
         ...searchResult,
-        array: [...response],
+        array: [...output],
         loading: false,
         error: false,
       });
     };
 
-    handleSearchFilter();
+    if (searchInput !== "") {
+      handleSearchFilter();
+    }
   }, [searchInput]);
 
   return (
@@ -101,20 +117,37 @@ const Header = () => {
                   </Link>
                 );
               })}
-
-              <h4 className="h4 px-5 my-3">Admin</h4>
-              {adminNav.map((nav, index) => {
-                return (
-                  <Link
-                    href={nav.link}
-                    key={index}
-                    className="px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600"
-                    onClick={() => setMobileMenu(false)}
-                  >
-                    {nav.menu}
-                  </Link>
-                );
-              })}
+              {!session?.user ? (
+                <Link
+                  href="/login"
+                  className="px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600"
+                >
+                  Login
+                </Link>
+              ) : (
+                <div
+                  className=" px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600 cursor-pointer"
+                  onClick={async () => {
+                    await doUserLogout();
+                  }}
+                >
+                  <p>Logout</p>
+                </div>
+              )}
+              {session?.user && <h4 className="h4 px-5 my-3">Admin</h4>}
+              {session?.user &&
+                adminNav.map((nav, index) => {
+                  return (
+                    <Link
+                      href={nav.link}
+                      key={index}
+                      className="px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600"
+                      onClick={() => setMobileMenu(false)}
+                    >
+                      {nav.menu}
+                    </Link>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -137,7 +170,11 @@ const Header = () => {
       )}
       <div className="flex  gap-5 justify-center items-center ">
         <div className="w-[50px] ">
-          <img src="/placeholder.png" alt="Site Logo" className="w-full" />
+          <img
+            src="/placeholder.png"
+            alt="Site Logo"
+            className="w-full object-cover"
+          />
         </div>
         <div className="flex gap-5 justify-center items-center">
           <p className="hover:text-black hover:underline-offset-8 hover:underline cursor-pointer">
@@ -165,9 +202,21 @@ const Header = () => {
             value={searchInput}
           />
         </div>
-        <div className="hidden md:block">
-          <p>Admin</p>
-        </div>
+        {!session?.user ? (
+          <div
+            className="hidden md:block cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
+            onClick={() => router.push("/login")}
+          >
+            <p>Log in</p>
+          </div>
+        ) : (
+          <div
+            className="hidden md:block cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
+            onClick={async () => await doUserLogout()}
+          >
+            <p>Logout</p>
+          </div>
+        )}
         <div
           className="hamburger cursor-pointer md:hidden"
           onClick={() => {
@@ -201,7 +250,11 @@ const Header = () => {
                         </div>
                         <div>
                           <h2 className=" text-black">
-                            {fellow.name.firstname + " " + fellow.name.lastname}
+                            {fellow.name.surname +
+                              " " +
+                              fellow.name.firstname +
+                              " " +
+                              fellow.name.othername}
                           </h2>
                           <p className="">{fellow.email}</p>
                         </div>

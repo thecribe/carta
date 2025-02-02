@@ -1,7 +1,8 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import InsCoh from "./InsCoh";
-import { getAllFellow, getAllUniversity } from "@/apiServerActions";
+import { getAllInstitution } from "@/utils/institution";
+import { getAllFellow } from "@/utils/fellow";
 
 const University = () => {
   const [university, setUniversity] = useState({
@@ -39,7 +40,7 @@ const University = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await getAllUniversity();
+      const response = await getAllInstitution();
 
       if (!response) {
         setUniversity({
@@ -53,7 +54,7 @@ const University = () => {
 
       setUniversity({
         ...university,
-        array: [...response],
+        array: [...response.institutions],
         loading: false,
         error: false,
       });
@@ -70,11 +71,12 @@ const University = () => {
           {/* {allFellow.loading ? "..." : allFellow.array.length} */}
         </p>
       </div>
-      <div className="w-full h-[96%] md:flex gap-5 p-2">
+      <div className="w-full h-[96%]  flex flex-col gap-5 p-2">
         <InsCoh
           content={university}
           callToAction={(e) => getFellows(e)}
           allFellow={allFellow}
+          type="institution"
         />
       </div>
     </Fragment>

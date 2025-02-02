@@ -69,19 +69,23 @@ const DisplayFellows = ({ allFellow }) => {
                               router.push(`/directory/fellows/${fellow.id}`);
                             }}
                           >
-                            {fellow.name.firstname + " " + fellow.name.lastname}
+                            {fellow.name.surname +
+                              " " +
+                              fellow.name.firstname +
+                              " " +
+                              fellow.name.othername}
                           </td>
                           <td className="py-3 px-5  items-center">
                             {fellow.email}
                           </td>
                           <td className="py-3 px-5  items-center">
-                            {fellow.faculty + "/" + fellow.university}
+                            {fellow.faculty + "/" + fellow.institution.name}
                           </td>
                           <td className="py-3 px-5  items-center">
                             {fellow.department}
                           </td>
                           <td className="py-3 px-5  items-center">
-                            {fellow.cohort}
+                            {fellow.cohort.cohort}
                           </td>
                         </tr>
                       );

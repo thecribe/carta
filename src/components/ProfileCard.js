@@ -5,19 +5,24 @@ const ProfileCard = ({ fellow }) => {
   const router = useRouter();
   return (
     <div
-      className="w-full flex flex-col gap-3 cursor-pointer"
+      className="w-full flex flex-col gap-3 cursor-pointer p-3 border rounded-md shadow-sm"
       onClick={() => {
         router.push(`/directory/fellows/${fellow.id}`);
       }}
     >
       <img
-        src="/placeholder.png"
+        src={fellow.profileImg.url}
         alt="placeholder"
-        className="rounded-tr-md rounded-bl-md"
+        className="rounded-tr-lg rounded-bl-lg "
       />
       <h3 className="text-center">
-        {fellow.name.firstname + " " + fellow.name.lastname}
+        {fellow.name.surname +
+          " " +
+          fellow.name.firstname +
+          " " +
+          fellow.name.othername}
       </h3>
+      <p className="text-xs text-center">{fellow.currentLevel}</p>
     </div>
   );
 };

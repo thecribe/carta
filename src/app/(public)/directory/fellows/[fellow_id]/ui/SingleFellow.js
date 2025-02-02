@@ -1,5 +1,6 @@
 "use client";
-import { getSingleFellow } from "@/apiServerActions";
+
+import { getSingleFellow } from "@/utils/fellow";
 import React, { Fragment, useEffect, useState } from "react";
 
 const SingleFellow = ({ id }) => {
@@ -26,7 +27,11 @@ const SingleFellow = ({ id }) => {
 
       setFellow({
         ...fellowDetails,
-        fellow: { ...response },
+        fellow: {
+          ...response,
+          areaOfSpecialization: response.areaOfSpecialization.split(","),
+          researchInterest: response.researchInterest.split(","),
+        },
         loading: false,
         error: false,
       });
@@ -44,7 +49,11 @@ const SingleFellow = ({ id }) => {
               <div className=" bg-gray-300 p-8 flex flex-col gap-5">
                 <div>
                   <h2 className="h2 uppercase">
-                    {fellow.name.firstname + " " + fellow.name.lastname}
+                    {fellow.name.surname +
+                      " " +
+                      fellow.name.firstname +
+                      " " +
+                      fellow.name.othername}
                   </h2>
                   <p className="capitalize">{fellow.position}</p>
                 </div>
@@ -94,7 +103,11 @@ const SingleFellow = ({ id }) => {
                       <p className="font-semibold text-black">
                         Name:
                         <span className="block text-gray-500 mt-1">
-                          {fellow.name.firstname + " " + fellow.name.lastname}
+                          {fellow.name.surname +
+                            " " +
+                            fellow.name.firstname +
+                            " " +
+                            fellow.name.othername}
                         </span>
                       </p>
                       <p className="font-semibold text-black">
@@ -171,7 +184,7 @@ const SingleFellow = ({ id }) => {
                   <div className=" w-full flex flex-col   shadow-sm bg-white rounded-md">
                     <div className="w-full h-[300px]  ">
                       <img
-                        src="/placeholder.png"
+                        src={fellow.profileImg.url}
                         className="w-full h-full object-cover rounded-md"
                       />
                     </div>
@@ -180,13 +193,15 @@ const SingleFellow = ({ id }) => {
                         PhD Research Title
                       </h3>
                       <p className="text-xs">{fellow.PhDResearchTitle}</p>
-                      {/* <p className="text-xs">....2019</p> */}
+                      <p className="text-xs">
+                        ...{fellow.PhDResearchInstitute}
+                      </p>
                     </div>
                   </div>
                   <div className="w-full bg-white p-5 shadow-sm flex flex-col gap-5 ">
                     <div className="flex justify-between items-center">
                       <p className="text-black ">CARTA Cohort</p>
-                      <p className="text-xs">{fellow.cohort}</p>
+                      <p className="text-xs">{fellow.cohort.cohort}</p>
                     </div>
                     <div className="flex justify-between items-center">
                       <p className="text-black ">CARTA Graduate</p>
@@ -221,7 +236,7 @@ const SingleFellow = ({ id }) => {
                   <p className="px-1">{fellow.faculty}</p>
                   <p className="px-1">{fellow.department}</p>
                 </div>
-                <p>{fellow.university}</p>
+                <p>{fellow.institution.name}</p>
                 <div className="flex flex-wrap gap-3 justify-center items-center text-xs mt-5">
                   {fellow.ORCIDNumber.includes("http") ? (
                     <a
@@ -262,7 +277,7 @@ const SingleFellow = ({ id }) => {
                   <div className="w-full flex flex-col gap-5  ">
                     <div className="flex justify-between items-center">
                       <p className="">CARTA Cohort</p>
-                      <p className="text-xs">{fellow.cohort}</p>
+                      <p className="text-xs">{fellow.cohort.cohort}</p>
                     </div>
                     <div className="flex justify-between items-center">
                       <p className="">CARTA Graduate</p>

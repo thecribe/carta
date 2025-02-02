@@ -1,7 +1,7 @@
 export const researchers = [
   {
     id: 11,
-    name: { firstname: "John", lastname: "Doe" },
+    name: { firstname: "John", othername: "", surname: "Doe" },
     email: "john.doe@example.com",
     sex: "Male",
     currentLevel: "PhD",
@@ -21,7 +21,7 @@ export const researchers = [
   },
   {
     id: 22,
-    name: { firstname: "Jane", lastname: "Smith" },
+    name: { firstname: "Jane", othername: "", surname: "Smith" },
     email: "jane.smith@example.com",
     sex: "Female",
     currentLevel: "PhD",
@@ -41,7 +41,7 @@ export const researchers = [
   },
   {
     id: 33,
-    name: { firstname: "Alice", lastname: "Johnson" },
+    name: { firstname: "Alice", othername: "", surname: "Johnson" },
     email: "alice.johnson@example.com",
     sex: "Female",
     currentLevel: "PhD",
@@ -61,7 +61,7 @@ export const researchers = [
   },
   {
     id: 44,
-    name: { firstname: "Bob", lastname: "Williams" },
+    name: { firstname: "Bob", othername: "", surname: "Williams" },
     email: "bob.williams@example.com",
     sex: "Male",
     currentLevel: "PhD",
@@ -81,7 +81,7 @@ export const researchers = [
   },
   {
     id: 53,
-    name: { firstname: "Eve", lastname: "Martinez" },
+    name: { firstname: "Eve", othername: "", surname: "Martinez" },
     email: "eve.martinez@example.com",
     sex: "Female",
     currentLevel: "PhD",
@@ -102,7 +102,7 @@ export const researchers = [
   },
   {
     id: 63,
-    name: { firstname: "Oliver", lastname: "Thomas" },
+    name: { firstname: "Oliver", othername: "", surname: "Thomas" },
     email: "oliver.thomas@example.com",
     sex: "Male",
     currentLevel: "PhD",
@@ -122,7 +122,7 @@ export const researchers = [
   },
   {
     id: 73,
-    name: { firstname: "Sophia", lastname: "Clark" },
+    name: { firstname: "Sophia", othername: "", surname: "Clark" },
     email: "sophia.clark@example.com",
     sex: "Female",
     currentLevel: "PhD",
@@ -142,7 +142,7 @@ export const researchers = [
   },
   {
     id: 83,
-    name: { firstname: "Jack", lastname: "Davies" },
+    name: { firstname: "Jack", othername: "", surname: "Davies" },
     email: "jack.davies@example.com",
     sex: "Male",
     currentLevel: "PhD",
@@ -162,7 +162,7 @@ export const researchers = [
   },
   {
     id: 93,
-    name: { firstname: "Liam", lastname: "Miller" },
+    name: { firstname: "Liam", othername: "", surname: "Miller" },
     email: "liam.miller@example.com",
     sex: "Male",
     currentLevel: "PhD",
@@ -182,7 +182,7 @@ export const researchers = [
   },
   {
     id: 103,
-    name: { firstname: "Olivia", lastname: "Taylor" },
+    name: { firstname: "Olivia", othername: "", surname: "Taylor" },
     email: "olivia.taylor@example.com",
     sex: "Female",
     currentLevel: "PhD",
@@ -203,7 +203,7 @@ export const researchers = [
   },
   {
     id: 1,
-    name: { firstname: "Alice", lastname: "Johnson" },
+    name: { firstname: "Alice", othername: "", surname: "Johnson" },
     email: "alice.johnson@example.com",
     sex: "Female",
     currentLevel: "PhD Candidate",
@@ -224,7 +224,7 @@ export const researchers = [
   },
   {
     id: 2,
-    name: { firstname: "Bob", lastname: "Smith" },
+    name: { firstname: "Bob", othername: "", surname: "Smith" },
     email: "bob.smith@example.com",
     sex: "Male",
     currentLevel: "Postdoctoral Fellow",
@@ -249,7 +249,7 @@ export const researchers = [
   },
   {
     id: 3,
-    name: { firstname: "Catherine", lastname: "Lee" },
+    name: { firstname: "Catherine", othername: "", surname: "Lee" },
     email: "catherine.lee@example.com",
     sex: "Female",
     currentLevel: "PhD Graduate",
@@ -274,7 +274,7 @@ export const researchers = [
   },
   {
     id: 4,
-    name: { firstname: "Daniel", lastname: "Martinez" },
+    name: { firstname: "Daniel", othername: "", surname: "Martinez" },
     email: "daniel.martinez@example.com",
     sex: "Male",
     currentLevel: "PhD Candidate",
@@ -300,7 +300,7 @@ export const researchers = [
   },
   {
     id: 5,
-    name: { firstname: "Emily", lastname: "Nguyen" },
+    name: { firstname: "Emily", othername: "", surname: "Nguyen" },
     email: "emily.nguyen@example.com",
     sex: "Female",
     currentLevel: "PhD Graduate",
@@ -321,7 +321,7 @@ export const researchers = [
   },
   {
     id: 6,
-    name: { firstname: "Frank", lastname: "O'Connor" },
+    name: { firstname: "Frank", othername: "", surname: "O'Connor" },
     email: "frank.oconnor@example.com",
     sex: "Male",
     currentLevel: "PhD Candidate",
@@ -346,7 +346,7 @@ export const researchers = [
   },
   {
     id: 7,
-    name: { firstname: "Grace", lastname: "Kim" },
+    name: { firstname: "Grace", othername: "", surname: "Kim" },
     email: "grace.kim@example.com",
     sex: "Female",
     currentLevel: "Postdoctoral Fellow",
@@ -372,7 +372,7 @@ export const researchers = [
   },
   {
     id: 8,
-    name: { firstname: "Henry", lastname: "Zhang" },
+    name: { firstname: "Henry", othername: "", surname: "Zhang" },
     email: "henry.zhang@example.com",
     sex: "Male",
     currentLevel: "PhD Graduate",
@@ -398,7 +398,7 @@ export const researchers = [
   },
   {
     id: 9,
-    name: { firstname: "Isabella", lastname: "Garcia" },
+    name: { firstname: "Isabella", othername: "", surname: "Garcia" },
     email: "isabella.garcia@example.com",
     sex: "Female",
     currentLevel: "PhD Candidate",
@@ -423,7 +423,7 @@ export const researchers = [
   },
   {
     id: 10,
-    name: { firstname: "Jack", lastname: "Brown" },
+    name: { firstname: "Jack", othername: "", surname: "Brown" },
     email: "jack.brown@example.com",
     sex: "Male",
     currentLevel: "Postdoctoral Fellow",
@@ -448,7 +448,7 @@ export const researchers = [
   },
   {
     id: 11,
-    name: { firstname: "Karen", lastname: "Davis" },
+    name: { firstname: "Karen", othername: "", surname: "Davis" },
     email: "karen.davis@example.com",
     sex: "Female",
     currentLevel: "PhD Graduate",
@@ -473,7 +473,7 @@ export const researchers = [
   },
   {
     id: 12,
-    name: { firstname: "Liam", lastname: "Wilson" },
+    name: { firstname: "Liam", othername: "", surname: "Wilson" },
     email: "liam.wilson@example.com",
     sex: "Male",
     currentLevel: "PhD Candidate",
@@ -499,7 +499,7 @@ export const researchers = [
   },
   {
     id: 13,
-    name: { firstname: "Mia", lastname: "Taylor" },
+    name: { firstname: "Mia", othername: "", surname: "Taylor" },
     email: "mia.taylor@example.com",
     sex: "Female",
     currentLevel: "Postdoctoral Fellow",
@@ -525,7 +525,7 @@ export const researchers = [
   },
   {
     id: 14,
-    name: { firstname: "Noah", lastname: "Anderson" },
+    name: { firstname: "Noah", othername: "", surname: "Anderson" },
     email: "noah.anderson@example.com",
     sex: "Male",
     currentLevel: "PhD Graduate",
@@ -547,7 +547,7 @@ export const researchers = [
   },
   {
     id: 15,
-    name: { firstname: "Olivia", lastname: "Hernandez" },
+    name: { firstname: "Olivia", othername: "", surname: "Hernandez" },
     email: "olivia.hernandez@example.com",
     sex: "Female",
     currentLevel: "PhD Candidate",
@@ -574,7 +574,7 @@ export const researchers = [
   },
   {
     id: 16,
-    name: { firstname: "Paul", lastname: "Garcia" },
+    name: { firstname: "Paul", othername: "", surname: "Garcia" },
     email: "paul.garcia@example.com",
     sex: "Male",
     currentLevel: "Postdoctoral Fellow",
@@ -600,7 +600,7 @@ export const researchers = [
   },
   {
     id: 17,
-    name: { firstname: "Quincy", lastname: "Robinson" },
+    name: { firstname: "Quincy", othername: "", surname: "Robinson" },
     email: "quincy.robinson@example.com",
     sex: "Male",
     currentLevel: "PhD Graduate",
@@ -626,7 +626,7 @@ export const researchers = [
   },
   {
     id: 18,
-    name: { firstname: "Rachel", lastname: "Lopez" },
+    name: { firstname: "Rachel", othername: "", surname: "Lopez" },
     email: "rachel.lopez@example.com",
     sex: "Female",
     currentLevel: "PhD Candidate",
@@ -652,7 +652,7 @@ export const researchers = [
   },
   {
     id: 19,
-    name: { firstname: "Samuel", lastname: "Miller" },
+    name: { firstname: "Samuel", othername: "", surname: "Miller" },
     email: "samuel.miller@example.com",
     sex: "Male",
     currentLevel: "Postdoctoral Fellow",
@@ -678,7 +678,7 @@ export const researchers = [
   },
   {
     id: 20,
-    name: { firstname: "Tina", lastname: "Clark" },
+    name: { firstname: "Tina", othername: "", surname: "Clark" },
     email: "tina.clark@example.com",
     sex: "Female",
     currentLevel: "PhD Graduate",
@@ -704,7 +704,7 @@ export const researchers = [
   },
   {
     id: 21,
-    name: { firstname: "Uma", lastname: "Patel" },
+    name: { firstname: "Uma", othername: "", surname: "Patel" },
     email: "uma.patel@example.com",
     sex: "Female",
     currentLevel: "PhD Candidate",
@@ -730,7 +730,7 @@ export const researchers = [
   },
   {
     id: 22,
-    name: { firstname: "Victor", lastname: "Rodriguez" },
+    name: { firstname: "Victor", othername: "", surname: "Rodriguez" },
     email: "victor.rodriguez@example.com",
     sex: "Male",
     currentLevel: "Postdoctoral Fellow",
@@ -757,7 +757,7 @@ export const researchers = [
   },
   {
     id: 23,
-    name: { firstname: "Wendy", lastname: "Lee" },
+    name: { firstname: "Wendy", othername: "", surname: "Lee" },
     email: "wendy.lee@example.com",
     sex: "Female",
     currentLevel: "PhD Graduate",
@@ -783,7 +783,7 @@ export const researchers = [
   },
   {
     id: 24,
-    name: { firstname: "Xander", lastname: "Kim" },
+    name: { firstname: "Xander", othername: "", surname: "Kim" },
     email: "xander.kim@example.com",
     sex: "Male",
     currentLevel: "PhD Candidate",
@@ -809,7 +809,7 @@ export const researchers = [
   },
   {
     id: 25,
-    name: { firstname: "Yvonne", lastname: "Garcia" },
+    name: { firstname: "Yvonne", othername: "", surname: "Garcia" },
     email: "yvonne.garcia@example.com",
     sex: "Female",
     currentLevel: "Postdoctoral Fellow",
@@ -835,7 +835,7 @@ export const researchers = [
   },
   {
     id: 26,
-    name: { firstname: "Zachary", lastname: "Lopez" },
+    name: { firstname: "Zachary", othername: "", surname: "Lopez" },
     email: "zachary.lopez@example.com",
     sex: "Male",
     currentLevel: "PhD Graduate",

@@ -1,8 +1,9 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 
-import { getAllCohort, getAllFellow } from "@/apiServerActions";
 import InsCoh from "../../university/ui/InsCoh";
+import { getAllCohort } from "@/utils/cohort";
+import { getAllFellow } from "@/utils/fellow";
 
 const Cohort = () => {
   const [cohort, setCohort] = useState({
@@ -54,7 +55,7 @@ const Cohort = () => {
 
       setCohort({
         ...cohort,
-        array: [...response],
+        array: [...response.cohorts],
         loading: false,
         error: false,
       });
@@ -71,11 +72,12 @@ const Cohort = () => {
           {/* {allFellow.loading ? "..." : allFellow.array.length} */}
         </p>
       </div>
-      <div className="w-full h-[96%] md:flex gap-5 p-2">
+      <div className="w-full h-[96%] flex flex-col gap-5 p-2">
         <InsCoh
           content={cohort}
           callToAction={(e) => getFellows(e)}
           allFellow={allFellow}
+          type="cohort"
         />
       </div>
     </Fragment>

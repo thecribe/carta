@@ -1,5 +1,6 @@
 "use client";
-import { getSearchFellows } from "@/apiServerActions";
+
+import { getAllFellow } from "@/utils/fellow";
 import { useRouter } from "next/navigation";
 import React, { Fragment, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -9,15 +10,14 @@ const SearchPage = ({ close_func }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState({
     array: [],
-    loading: false,
+    loading: true,
     error: false,
   });
   const router = useRouter();
 
   useEffect(() => {
-    setSearchResult({ ...searchResult, loading: true });
     const handleSearchFilter = async () => {
-      const response = await getSearchFellows(searchInput);
+      const response = await getAllFellow();
 
       if (!response) {
         setSearchInput({
@@ -28,15 +28,35 @@ const SearchPage = ({ close_func }) => {
         return null;
       }
 
+      let output = [];
+      if (searchInput !== "") {
+        [...response].forEach((fellow, index) => {
+          if (
+            (
+              fellow.name.surname +
+              " " +
+              fellow.name.firstname +
+              " " +
+              fellow.name.othername
+            )
+              .toLowerCase()
+              .includes(searchInput)
+          ) {
+            output.push(fellow);
+          }
+        });
+      }
+
       setSearchResult({
         ...searchResult,
-        array: [...response],
+        array: [...output],
         loading: false,
         error: false,
       });
     };
-
-    handleSearchFilter();
+    if (searchInput !== "") {
+      handleSearchFilter();
+    }
   }, [searchInput]);
 
   const searchClickHandler = (id) => {
