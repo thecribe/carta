@@ -7,11 +7,15 @@ const layout = async ({ children }) => {
 
   return (
     <Fragment>
-      <section className="w-full md:flex h-[95vh]">
-        <section className="w-full md:w-[15%] lg:w-[13%] h-full overflow-y-auto bg-gray-100 py-8 hidden  md:flex flex-col gap-5">
-          <Sidebar session={session} />
+      <section className="w-full md:flex  h-full ">
+        <section className="w-full md:w-[15%] lg:w-[13%] h-full py-5 pl-5 hidden md:flex  ">
+          <section className="w-full h-full overflow-y-auto flex flex-col gap-5 bg-secondary_color rounded-lg py-3 shadow-sm">
+            <Sidebar session={session} />
+          </section>
         </section>
-        <section className="w-full md:w-[85%] lg:w-[87%]">{children}</section>
+        <section className="w-full px-5 md:w-[85%] lg:w-[87%]">
+          {children}
+        </section>
       </section>
     </Fragment>
   );

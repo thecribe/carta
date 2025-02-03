@@ -98,13 +98,13 @@ const Header = ({ session, key }) => {
                 onClick={() => {
                   setMobileMenu(false);
                 }}
-                className="text-xl cursor-pointer text-blue-900"
+                className="text-xl cursor-pointer text-black"
               >
                 <IoClose />
               </p>
             </div>
             <div className="flex flex-col gap-5">
-              <h4 className="h4 px-5 my-3">Directory</h4>
+              <h4 className="h4 px-5 my-3 text-secondary_color ">Directory</h4>
               {siderNav.map((nav, index) => {
                 return (
                   <Link
@@ -169,20 +169,20 @@ const Header = ({ session, key }) => {
         </div>
       )}
       <div className="flex  gap-5 justify-center items-center ">
-        <div className="w-[50px] ">
+        <div className="w-[50px]  ">
           <img
-            src="/placeholder.png"
+            src="/carta_site_logo.png"
             alt="Site Logo"
             className="w-full object-cover"
           />
         </div>
         <div className="flex gap-5 justify-center items-center">
-          <p className="hover:text-black hover:underline-offset-8 hover:underline cursor-pointer">
+          <p className="text-primary_text_color hover:text-black hover:underline-offset-8 hover:underline cursor-pointer">
             Carta Home
           </p>
         </div>
       </div>
-      <div className="flex gap-5 justify-center items-center relative">
+      <div className="flex gap-5 justify-center items-center relative text-primary_text_color">
         <FaSearch
           className="sm:hidden cursor-pointer"
           onClick={() => setSearchPage(true)}
@@ -227,11 +227,12 @@ const Header = ({ session, key }) => {
           (!searchResult.error ? (
             <div
               ref={popRef}
-              className="absolute w-[20rem] h-[30em] border-2-0  shadow-md rounded-md top-11 right-9  scrolling overflow-y-auto z-10 bg-white p-3 divide-y-2 italic text-xs "
+              className="absolute w-[20rem] h-[30em] border-2-0  shadow-md rounded-md top-11 right-9  scrolling overflow-y-auto z-10 bg-main_background border-2 p-3 divide-y-2 italic text-xs "
             >
               {!searchResult.loading ? (
                 searchResult.array.length > 0 ? (
                   searchResult.array.map((fellow, index) => {
+                    console.log(fellow);
                     return (
                       <div
                         key={index}
@@ -244,12 +245,12 @@ const Header = ({ session, key }) => {
                       >
                         <div className="w-[3rem] h-[3rem] rounded-full">
                           <img
-                            src="/placeholder.png"
+                            src={fellow.profileImg.url}
                             className="w-full h-full rounded-full object-cover"
                           />
                         </div>
                         <div>
-                          <h2 className=" text-black">
+                          <h2 className=" text-secondary_color">
                             {fellow.name.surname +
                               " " +
                               fellow.name.firstname +

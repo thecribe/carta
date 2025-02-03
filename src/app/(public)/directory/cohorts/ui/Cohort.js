@@ -66,9 +66,9 @@ const Cohort = () => {
 
   return (
     <Fragment>
-      <div className="flex gap-3 items-center mb-5">
-        <h2 className="h2">Cohorts</h2>
-        <p className="bg-gray-500 px-2 text-white text-xs rounded-xl">
+      <div className="flex gap-3 items-center mb-5 bg-secondary_color rounded-md p-3">
+        <h2 className="h2 text-secondary_text_color">Cohorts</h2>
+        <p className="bg-primary_color px-2 text-secondary_text_color text-xs rounded-xl">
           {/* {allFellow.loading ? "..." : allFellow.array.length} */}
         </p>
       </div>

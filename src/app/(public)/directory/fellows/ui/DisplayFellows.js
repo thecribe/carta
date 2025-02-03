@@ -3,23 +3,23 @@ import ProfileCard from "@/components/ProfileCard";
 import { useRouter } from "next/navigation";
 
 const DisplayFellows = ({ allFellow }) => {
-  const [layout, setLayout] = useState(true);
+  const [layout, setLayout] = useState(false);
   const router = useRouter();
 
   return (
     <Fragment>
       <div className="hidden md:flex w-full h-full flex-col gap-4">
-        <div className="justify-end flex gap-5">
-          <div className="flex justify-center items-center border divide-x-2 rounded-sm">
+        <div className="justify-end flex gap-5 ">
+          <div className="flex justify-center items-center border border-primary_color divide-x-2 divide-primary_color rounded-sm">
             <p
               onClick={() => setLayout(true)}
-              className="px-3 py-1 hover:bg-gray-600 hover:text-white cursor-pointer"
+              className="px-3 py-1 hover:bg-primary_color smooth-transition hover:text-secondary_text_color cursor-pointer"
             >
               Grid
             </p>
             <p
               onClick={() => setLayout(false)}
-              className="px-3 py-1 hover:bg-gray-600 hover:text-white cursor-pointer"
+              className="px-3 py-1 hover:bg-primary_color smooth-transition hover:text-secondary_text_color cursor-pointer"
             >
               List
             </p>
@@ -27,7 +27,7 @@ const DisplayFellows = ({ allFellow }) => {
         </div>
         {layout ? (
           <div className="md:block h-[95%] overflow-y-auto scrolling p-2">
-            <div className="flex flex-col justify-center items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-7">
+            <div className="flex flex-col justify-center items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
               {!allFellow.loading ? (
                 !allFellow.error ? (
                   allFellow.array.map((fellow, index) => {
@@ -46,7 +46,7 @@ const DisplayFellows = ({ allFellow }) => {
             {!allFellow.loading ? (
               !allFellow.error ? (
                 <table className="w-full shadow-sm text-left py-5">
-                  <thead className="bg-gray-100 sticky top-0 text-sm  ">
+                  <thead className="bg-white sticky top-0 text-sm  ">
                     <tr>
                       <th className="py-3 px-5">S/N</th>
                       <th className="py-3 px-5">Name</th>
@@ -105,7 +105,7 @@ const DisplayFellows = ({ allFellow }) => {
         {!allFellow.loading ? (
           !allFellow.error ? (
             <table className="w-full shadow-sm text-left py-5">
-              <thead className="bg-gray-100 sticky top-0 text-sm  ">
+              <thead className="bg-white sticky top-0 text-sm  ">
                 <tr>
                   <th className="py-3 px-5">S/N</th>
                   <th className="py-3 px-5">Name</th>
@@ -123,7 +123,11 @@ const DisplayFellows = ({ allFellow }) => {
                           router.push(`/directory/fellows/${fellow.id}`);
                         }}
                       >
-                        {fellow.name.firstname + " " + fellow.name.lastname}
+                        {fellow.name.surname +
+                          " " +
+                          fellow.name.firstname +
+                          " " +
+                          fellow.name.othername}
                       </td>
                       <td className="py-3 px-5  items-center">
                         {fellow.email}

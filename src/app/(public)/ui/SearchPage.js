@@ -98,13 +98,17 @@ const SearchPage = ({ close_func }) => {
                 >
                   <div className="w-[3rem] h-[3rem] rounded-full">
                     <img
-                      src="/placeholder.png"
+                      src={fellow.profileImg.url}
                       className="w-full h-full rounded-full object-cover"
                     />
                   </div>
                   <div>
-                    <h2 className=" text-black">
-                      {fellow.name.firstname + " " + fellow.name.lastname}
+                    <h2 className=" text-secondary_color">
+                      {fellow.name.surname +
+                        " " +
+                        fellow.name.firstname +
+                        " " +
+                        fellow.name.othername}
                     </h2>
                     <p className="">{fellow.email}</p>
                   </div>

@@ -13,11 +13,16 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={karla.className}>
-        <section className="p-2 flex justify-between bg-gray-50 shadow-sm md:h-[5vh]">
-          <HeaderContainer reload={new Date.now()} />
+      <body className={`${karla.className} scrolling`}>
+        <section className="sticky top-0 p-5 px-5 flex justify-center items-center bg-main_background shadow-sm ">
+          <section className="flex justify-between items-center w-full md:w-2/3 my-0 mx-auto px-2 md:shadow-sm  py-1">
+            <HeaderContainer />
+          </section>
         </section>
-        <section className="w-full h-[95vh]">{children}</section>
+        <section className="w-full h-[92vh]">{children}</section>
+        <section className=" bg-black text-white py-3">
+          <p className="text-center">footer side</p>
+        </section>
       </body>
     </html>
   );
