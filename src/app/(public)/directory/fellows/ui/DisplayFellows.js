@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
 import { useRouter } from "next/navigation";
+import { PiGridNineFill } from "react-icons/pi";
+import { CiCircleList } from "react-icons/ci";
 
 const DisplayFellows = ({ allFellow }) => {
-  const [layout, setLayout] = useState(false);
+  const [layout, setLayout] = useState(true);
   const router = useRouter();
 
   return (
@@ -13,21 +15,21 @@ const DisplayFellows = ({ allFellow }) => {
           <div className="flex justify-center items-center border border-primary_color divide-x-2 divide-primary_color rounded-sm">
             <p
               onClick={() => setLayout(true)}
-              className="px-3 py-1 hover:bg-primary_color smooth-transition hover:text-secondary_text_color cursor-pointer"
+              className="px-3 py-1 text-primary_color smooth-transition  cursor-pointer"
             >
-              Grid
+              <PiGridNineFill />
             </p>
             <p
               onClick={() => setLayout(false)}
-              className="px-3 py-1 hover:bg-primary_color smooth-transition hover:text-secondary_text_color cursor-pointer"
+              className="px-3 py-1 text-primary_color smooth-transition cursor-pointer"
             >
-              List
+              <CiCircleList />
             </p>
           </div>
         </div>
         {layout ? (
           <div className="md:block h-[95%] overflow-y-auto scrolling p-2">
-            <div className="flex flex-col justify-center items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
+            <div className="flex flex-col  items-center md:flex-row flex-wrap gap-7">
               {!allFellow.loading ? (
                 !allFellow.error ? (
                   allFellow.array.map((fellow, index) => {
@@ -37,7 +39,9 @@ const DisplayFellows = ({ allFellow }) => {
                   <p>{allFellow.error}</p>
                 )
               ) : (
-                <p>loading</p>
+                <div className="w-full h-full flex justify-center items-center">
+                  <span className="loader"></span>
+                </div>
               )}
             </div>
           </div>
@@ -96,7 +100,9 @@ const DisplayFellows = ({ allFellow }) => {
                 <p>{allFellow.error}</p>
               )
             ) : (
-              <p>loading</p>
+              <div className="flex justify-center items-center">
+                <span className="loader"></span>
+              </div>
             )}
           </div>
         )}
@@ -141,7 +147,9 @@ const DisplayFellows = ({ allFellow }) => {
             <p>{allFellow.error}</p>
           )
         ) : (
-          <p>loading</p>
+          <div className="flex justify-center items-center">
+            <span className="loader"></span>
+          </div>
         )}
       </div>
     </Fragment>

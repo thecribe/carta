@@ -4,9 +4,12 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { TiWarning } from "react-icons/ti";
 import Button from "./Button";
 import { GeneralContext } from "@/components/Context";
+import { useRouter } from "next/navigation";
 
 const ManageTable = ({ data, editLink }) => {
   const [deleteModal, setDeleteModal] = useState(false);
+
+  const router = useRouter();
 
   const { selectedOption, setSelectedOption, searchInput, deleteHandler } =
     useContext(GeneralContext);
@@ -46,8 +49,8 @@ const ManageTable = ({ data, editLink }) => {
       )}
       {!data.loading ? (
         !data.error ? (
-          <table className="w-full shadow-sm text-left py-5">
-            <thead className="bg-gray-100 sticky top-0 text-sm  ">
+          <table className="w-full  text-left py-5 ">
+            <thead className=" md:sticky top-0 text-sm bg-white ">
               <tr>
                 <th className="py-3 px-5">S/N</th>
                 <th className="py-3 px-5">Name</th>
@@ -63,7 +66,10 @@ const ManageTable = ({ data, editLink }) => {
                     <td className="py-3 px-5 items-center">{index + 1}</td>
                     <td className="py-3 px-5 cursor-pointer h-[70px] edit-panel-control">
                       <div>
-                        <p className="hover:underline underline-offset-2 font-semibold">
+                        <p
+                          className="hover:underline underline-offset-2 font-semibold"
+                          onClick={() => router.push(`${editLink}${fellow.id}`)}
+                        >
                           {fellow.name.surname +
                             " " +
                             fellow.name.firstname +
@@ -113,7 +119,9 @@ const ManageTable = ({ data, editLink }) => {
           <p>{data.error}</p>
         )
       ) : (
-        <p>loading</p>
+        <div className="w-full h-full flex justify-center items-center">
+          <span className="loader"></span>
+        </div>
       )}
     </Fragment>
   );

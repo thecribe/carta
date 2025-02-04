@@ -10,6 +10,8 @@ import { adminNav, siderNav } from "../directory/ui/Sidebar";
 import SearchPage from "./SearchPage";
 import { doUserLogout } from "@/utils/auth";
 import { getAllFellow } from "@/utils/fellow";
+import { IoLogInOutline } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
 
 const Header = ({ session, key }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -85,7 +87,7 @@ const Header = ({ session, key }) => {
   return (
     <Fragment>
       {mobileMenu && (
-        <div className="fixed top-0 left-0 w-full h-full z-10 text-sm capitalize md:hidden">
+        <div className="fixed top-0 left-0 w-full h-full z-50 text-sm capitalize md:hidden">
           <div
             className=" absolute top-0 left-0 w-full h-full bg-black opacity-60 z-20"
             onClick={() => {
@@ -177,18 +179,21 @@ const Header = ({ session, key }) => {
           />
         </div>
         <div className="flex gap-5 justify-center items-center">
-          <p className="text-primary_text_color hover:text-black hover:underline-offset-8 hover:underline cursor-pointer">
+          <a
+            href="https://carta.oauife.edu.ng/"
+            className="text-primary_text_color hover:text-black hover:underline-offset-8 hover:underline cursor-pointer"
+          >
             Carta Home
-          </p>
+          </a>
         </div>
       </div>
       <div className="flex gap-5 justify-center items-center relative text-primary_text_color">
         <FaSearch
-          className="sm:hidden cursor-pointer"
+          className="sm:hidden cursor-pointer text-primary_color"
           onClick={() => setSearchPage(true)}
         />
         <div className="hidden sm:flex gap-2 justify-center items-center bg-white p-2 divide-x-2 rounded-sm shadow-sm">
-          <FaSearch />
+          <FaSearch className="text-primary_color" />
           <input
             type="text"
             id="search"
@@ -204,16 +209,18 @@ const Header = ({ session, key }) => {
         </div>
         {!session?.user ? (
           <div
-            className="hidden md:block cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
+            className="hidden md:flex items-center justify-center gap-1 cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
             onClick={() => router.push("/login")}
           >
+            <IoLogInOutline className="text-primary_color" />
             <p>Log in</p>
           </div>
         ) : (
           <div
-            className="hidden md:block cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
+            className="hidden md:flex items-center justify-center gap-1 cursor-pointer hover:underline underline-offset-4 hover:font-semibold "
             onClick={async () => await doUserLogout()}
           >
+            <BiLogOut className="text-primary_color" />
             <p>Logout</p>
           </div>
         )}

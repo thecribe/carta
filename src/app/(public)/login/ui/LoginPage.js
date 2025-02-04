@@ -35,7 +35,7 @@ const LoginPage = () => {
   };
   return (
     <Fragment>
-      <div className="w-full text-center pb-3 text-black font-semibold">
+      <div className="w-full text-center pb-3 text-white font-semibold">
         <h2 className="text-2xl">Login Form</h2>
       </div>
       <LoginForm handleLoginPrompt={handleLoginPrompt} />
@@ -44,7 +44,9 @@ const LoginPage = () => {
           {error.error && error.message}
         </p>
       ) : (
-        <p>loading</p>
+        <div className="w-full h-full flex justify-center items-center">
+          <span className="loader"></span>
+        </div>
       )}
       <p
         className="text-sm text-center text-blue-900 underline underline-offset-4 cursor-pointer"

@@ -106,25 +106,27 @@ const ManageCohorts = () => {
   };
   return (
     <Fragment>
-      <div className="h-full flex flex-col gap-5  ">
-        <div className="flex gap-3 items-center mb-5">
-          <h2 className="h2">Manage all cohorts</h2>
-          <p className="bg-gray-500 px-2 text-white text-xs rounded-xl">
-            {/* {allCohorts.loading ? "..." : allCohorts.array.length} */}
+      <div className="h-full flex flex-col gap-3  ">
+        <div className="flex gap-3 items-center mb-5  rounded-md ">
+          <h2 className="h2 text-black">Manage all cohorts</h2>
+          <p className="bg-primary_color px-2 text-secondary_text_color text-xs rounded-xl">
+            {/* {allFellow.loading ? "..." : allFellow.array.length} */}
           </p>
         </div>
-        <div className="flex gap-5">
-          <Button
-            handleButtonClick={(event) => {
-              event.preventDefault();
-              router.push("/dashboard/manage-cohorts?action=addnewcohort");
-              setModalToggle({ ...modalToggle, add: true });
-            }}
-          >
-            Add New
-          </Button>
+        <div className="flex flex-col sm:flex-row gap-5 bg-secondary_color rounded-md py-5 px-3">
+          <div className="">
+            <Button
+              handleButtonClick={(event) => {
+                event.preventDefault();
+                router.push("/dashboard/manage-cohorts?action=addnewcohort");
+                setModalToggle({ ...modalToggle, add: true });
+              }}
+            >
+              Add New
+            </Button>
+          </div>
           <div className=" flex gap-2 justify-center items-center bg-white p-2 divide-x-2 rounded-sm shadow-sm">
-            <FaSearch />
+            <FaSearch className="text-primary_color" />
             <input
               type="text"
               id="searchbar"
@@ -137,6 +139,7 @@ const ManageCohorts = () => {
             />
           </div>
         </div>
+
         {modalToggle.delete && (
           <Modal
             modalClose={() => {
@@ -186,11 +189,11 @@ const ManageCohorts = () => {
             />
           </Modal>
         )}
-        <div className="h-full shadow-sm overflow-y-auto scrolling">
+        <div className="h-full shadow-sm border overflow-y-auto rounded-md p-2 scrolling">
           {!allCohorts.loading ? (
             !allCohorts.error ? (
-              <table className="w-full shadow-sm text-left py-5">
-                <thead className="bg-gray-100 sticky top-0 text-sm  ">
+              <table className="w-full text-left py-5">
+                <thead className="md:sticky top-0 text-sm bg-white shadow-sm  ">
                   <tr>
                     <th className="py-3 px-5">S/N</th>
                     <th className="py-3 px-5">Cohort</th>
@@ -252,7 +255,9 @@ const ManageCohorts = () => {
               <p>{allCohorts.error}</p>
             )
           ) : (
-            <p>loading</p>
+            <div className="w-full h-full flex justify-center items-center">
+              <span className="loader"></span>
+            </div>
           )}
         </div>
       </div>

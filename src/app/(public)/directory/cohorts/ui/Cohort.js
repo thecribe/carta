@@ -12,13 +12,10 @@ const Cohort = () => {
     error: false,
   });
 
-  const [allFellow, setAllFellow] = useState({
-    array: [],
-    loading: true,
-    error: false,
-  });
+  const [allFellow, setAllFellow] = useState({});
 
   const getFellows = async (e) => {
+    setAllFellow({ array: [], loading: true, error: false });
     const response = await getAllFellow(e, "cohort");
 
     if (!response) {
@@ -72,7 +69,7 @@ const Cohort = () => {
           {/* {allFellow.loading ? "..." : allFellow.array.length} */}
         </p>
       </div>
-      <div className="w-full h-[96%] flex flex-col gap-5 p-2">
+      <div className="w-full h-[96%] flex flex-col gap-5">
         <InsCoh
           content={cohort}
           callToAction={(e) => getFellows(e)}

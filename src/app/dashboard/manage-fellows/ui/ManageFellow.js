@@ -53,34 +53,38 @@ const ManageFellow = () => {
   };
   return (
     <Fragment>
-      <div className="h-full flex flex-col gap-5  ">
-        <div className="flex gap-3 items-center mb-5">
-          <h2 className="h2">Manage all fellows</h2>
-          <p className="bg-gray-500 px-2 text-white text-xs rounded-xl">
+      <div className="h-full flex flex-col gap-3  ">
+        <div className="flex gap-3 items-center mb-5 rounded-md ">
+          <h2 className="h2 text-black">Manage all fellows</h2>
+          <p className="bg-primary_color px-2 text-secondary_text_color text-xs rounded-xl">
             {/* {allFellow.loading ? "..." : allFellow.array.length} */}
           </p>
         </div>
-        <div className="flex gap-5">
-          <Button
-            handleButtonClick={(event) => {
-              event.preventDefault();
-              router.push("/dashboard/manage-fellows/newFellow");
-            }}
-          >
-            Add New
-          </Button>
-          <div className=" flex gap-2 justify-center items-center bg-white p-2 divide-x-2 rounded-sm shadow-sm">
-            <FaSearch />
-            <input
-              type="text"
-              id="searchbar"
-              name="searchbar"
-              placeholder="Enter a fellow name"
-              className="outline-none bg-transparent px-2"
-              onChange={(e) => {
-                setSearchInput(e.target.value.toLowerCase());
+        <div className="flex flex-col sm:flex-row gap-5 bg-secondary_color rounded-md py-5 px-3">
+          <div className="">
+            <Button
+              handleButtonClick={(event) => {
+                event.preventDefault();
+                router.push("/dashboard/manage-fellows/newFellow");
               }}
-            />
+            >
+              Add New
+            </Button>
+          </div>
+          <div className=" flex gap-2 justify-center items-center bg-white p-2 divide-x-2 rounded-sm shadow-sm">
+            <FaSearch className="text-primary_color" />
+            <div className="w-full sm:w-2/3">
+              <input
+                type="text"
+                id="searchbar"
+                name="searchbar"
+                placeholder="Enter a fellow name"
+                className="outline-none bg-transparent px-2 w-full"
+                onChange={(e) => {
+                  setSearchInput(e.target.value.toLowerCase());
+                }}
+              />
+            </div>
           </div>
         </div>
         <GeneralContext.Provider
@@ -91,7 +95,7 @@ const ManageFellow = () => {
             deleteHandler,
           }}
         >
-          <div className="h-full shadow-sm overflow-y-auto scrolling">
+          <div className="h-full shadow-sm border overflow-y-auto rounded-md p-2 scrolling">
             <ManageTable
               data={allFellow}
               editLink={`/dashboard/manage-fellows/`}

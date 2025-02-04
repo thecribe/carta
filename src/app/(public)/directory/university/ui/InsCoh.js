@@ -23,7 +23,7 @@ const InsCoh = ({ content, callToAction, allFellow, type }) => {
       <Fragment>
         <div>
           {array.length > 0 ? (
-            <div className="bg-gray-700 rounded-sm p-5 flex flex-col gap-3">
+            <div className="bg-secondary_color rounded-md p-5 flex flex-col gap-3">
               <label htmlFor="inner_search" className=" text-white">
                 Please select{" "}
                 {type === "institution" ? "an Institution" : "a Cohort"}
@@ -34,7 +34,7 @@ const InsCoh = ({ content, callToAction, allFellow, type }) => {
                 onChange={(e) => setSearchHandler(e.target.value)}
                 className="border-2 rounded-sm shadow-sm p-2 w-full md:w-1/3 capitalize"
               >
-                {[{ id: "", name: "Select an option" }, ...array].map(
+                {[{ id: "", name: "Select option" }, ...array].map(
                   (arr, index) => (
                     <option key={index} value={arr.id}>
                       {arr.name ? arr.name : arr.cohort + "-" + arr.description}
@@ -57,14 +57,23 @@ const InsCoh = ({ content, callToAction, allFellow, type }) => {
           id="getToView"
           className="w-full  md:h-full shadow-sm overflow-y-auto scrolling "
         >
-          {!allFellow.error ? (
-            allFellow.array.length > 0 ? (
+          {allFellow.array ? (
+            allFellow.loading ? (
+              <div className="w-full h-full flex justify-center items-center">
+                <span className="loader"></span>
+              </div>
+            ) : allFellow.error ? (
+              <p>{allFellow.error}</p>
+            ) : allFellow.array.length > 0 ? (
               <DisplayFellows allFellow={allFellow} />
             ) : (
-              <p>No data found!</p>
+              <p>
+                Please add{" "}
+                {type === "institution" ? "an Institution" : "a Cohort"}
+              </p>
             )
           ) : (
-            <p>{allFellow.error}</p>
+            <p>Please select an option</p>
           )}
         </div>
       </Fragment>
@@ -75,7 +84,9 @@ const InsCoh = ({ content, callToAction, allFellow, type }) => {
     )
   ) : (
     <Fragment>
-      <p>loading</p>
+      <div className="w-full h-full flex justify-center items-center">
+        <span className="loader"></span>
+      </div>
     </Fragment>
   );
 };

@@ -219,16 +219,21 @@ const SingleFellow = ({ id }) => {
             </div>
 
             <div className=" w-full md:hidden p-2 flex flex-col gap-5">
-              <div className="w-full bg-gray-300  flex flex-col gap-2 justify-center items-center p-5">
+              <div className="w-full bg-white  flex flex-col gap-2 justify-center items-center p-5">
                 <div className="w-[150px] h-[150px]">
                   <img
-                    src="/placeholder.png"
+                    src={fellow.profileImg.url}
+                    alt={fellow.profileImg.name}
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
                 <div className="w-full">
-                  <h2 className="h2 uppercase text-center">
-                    {fellow.name.firstname + " " + fellow.name.lastname}
+                  <h2 className="h2 uppercase text-center text-secondary_color ">
+                    {fellow.name.surname +
+                      " " +
+                      fellow.name.firstname +
+                      " " +
+                      fellow.name.othername}
                   </h2>
                   <p className="capitalize text-center">{fellow.position}</p>
                 </div>
@@ -241,7 +246,7 @@ const SingleFellow = ({ id }) => {
                   {fellow.ORCIDNumber.includes("http") ? (
                     <a
                       href={fellow.ORCIDNumber}
-                      className="bg-white text-black px-2 py-1"
+                      className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
                     >
                       ORCID Number
                     </a>
@@ -252,7 +257,7 @@ const SingleFellow = ({ id }) => {
                         ? "#"
                         : fellow.googleScholarProfile
                     }
-                    className="bg-white text-black px-2 py-1"
+                    className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
                   >
                     Google Scholar
                   </a>
@@ -262,7 +267,7 @@ const SingleFellow = ({ id }) => {
                         ? "#"
                         : fellow.researchGateProfile
                     }
-                    className="bg-white text-black px-2 py-1"
+                    className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
                   >
                     ResearchGate
                   </a>
@@ -270,7 +275,7 @@ const SingleFellow = ({ id }) => {
               </div>
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-5 px-2 py-4 shadow-md rounded-md">
-                  <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase mb-2">
+                  <h3 className="font-semibold text-secondary_color w-full border-b-2 pb-2 uppercase mb-2">
                     Bio
                   </h3>
                   <p>{fellow.shortBio}</p>
@@ -299,7 +304,7 @@ const SingleFellow = ({ id }) => {
                   </div>
                 </div>
                 <div className=" px-2 shadow-md py-4 rounded-md">
-                  <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase">
+                  <h3 className="font-semibold text-secondary_color w-full border-b-2 pb-2 uppercase">
                     Contact Details
                   </h3>
                   <div className="flex flex-col gap-5 mt-5">
@@ -331,7 +336,7 @@ const SingleFellow = ({ id }) => {
                 </div>
                 <div className=" flex flex-col py-4 gap-5 px-2 shadow-md rounded-md">
                   <div>
-                    <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase mb-2">
+                    <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase mb-2 text-secondary_color">
                       Area of Specialization
                     </h3>
                     <div className="flex flex-wrap items-center gap-2">
@@ -352,7 +357,7 @@ const SingleFellow = ({ id }) => {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase mb-2">
+                    <h3 className="font-semibold text-black w-full border-b-2 pb-2 uppercase mb-2 text-secondary_color">
                       Research Interests
                     </h3>
                     <div className="flex flex-wrap items-center gap-2">
@@ -380,7 +385,9 @@ const SingleFellow = ({ id }) => {
           <p>{fellowDetails.error}</p>
         )
       ) : (
-        <p>loading</p>
+        <div className="w-full h-full flex justify-center items-center">
+          <span className="loader"></span>
+        </div>
       )}
     </Fragment>
   );

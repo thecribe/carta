@@ -2,6 +2,11 @@ import React, { Fragment } from "react";
 import Sidebar from "../(public)/directory/ui/Sidebar";
 import { auth } from "@/auth";
 
+export const metadata = {
+  title: "Dashboard | CARTA",
+  description: "A directory for CARTA fellows",
+};
+
 const layout = async ({ children }) => {
   const session = await auth();
 
@@ -13,7 +18,7 @@ const layout = async ({ children }) => {
             <Sidebar session={session} />
           </section>
         </section>
-        <section className="w-full px-5 md:w-[85%] lg:w-[87%]">
+        <section className="w-full p-2 md:p-5  md:w-[85%] lg:w-[87%]">
           {children}
         </section>
       </section>

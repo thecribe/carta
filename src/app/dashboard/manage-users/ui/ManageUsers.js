@@ -78,25 +78,28 @@ const ManageUsers = () => {
   };
   return (
     <Fragment>
-      <div className="h-full flex flex-col gap-5  ">
+      <div className="h-full flex flex-col gap-3  ">
         <div className="flex gap-3 items-center mb-5">
           <h2 className="h2">Manage all user</h2>
           <p className="bg-gray-500 px-2 text-white text-xs rounded-xl">
             {/* {allUsers.loading ? "..." : allUsers.array.length} */}
           </p>
         </div>
-        <div className="flex gap-5">
-          <Button
-            handleButtonClick={(event) => {
-              event.preventDefault();
-              router.push("/dashboard/manage-users?action=addUsers");
-              setModalToggle({ ...modalToggle, add: true });
-            }}
-          >
-            Add New
-          </Button>
+
+        <div className="flex flex-col sm:flex-row gap-5 bg-secondary_color rounded-md py-5 px-3">
+          <div className="">
+            <Button
+              handleButtonClick={(event) => {
+                event.preventDefault();
+                router.push("/dashboard/manage-users?action=addUsers");
+                setModalToggle({ ...modalToggle, add: true });
+              }}
+            >
+              Add New
+            </Button>
+          </div>
           <div className=" flex gap-2 justify-center items-center bg-white p-2 divide-x-2 rounded-sm shadow-sm">
-            <FaSearch />
+            <FaSearch className="text-primary_color" />
             <input
               type="text"
               id="searchbar"
@@ -158,11 +161,11 @@ const ManageUsers = () => {
             />
           </Modal>
         )}
-        <div className="h-full shadow-sm overflow-y-auto scrolling">
+        <div className="h-full shadow-sm border overflow-y-auto rounded-md p-2 scrolling">
           {!allUsers.loading ? (
             !allUsers.error ? (
-              <table className="w-full shadow-sm text-left py-5">
-                <thead className="bg-gray-100 sticky top-0 text-sm  ">
+              <table className="w-full  text-left py-5">
+                <thead className="md:sticky top-0 text-sm bg-white shadow-sm  ">
                   <tr>
                     <th className="py-3 px-5">S/N</th>
                     <th className="py-3 px-5">Username</th>
@@ -224,7 +227,9 @@ const ManageUsers = () => {
               <p>{allUsers.error}</p>
             )
           ) : (
-            <p>loading</p>
+            <div className="w-full h-full flex justify-center items-center">
+              <span className="loader"></span>
+            </div>
           )}
         </div>
       </div>

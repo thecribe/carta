@@ -234,14 +234,16 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
               )}
               <div className="relative hover:cursor-pointer cursor-pointer">
                 {!formFields.profileImg.url.length > 0 ? (
-                  <p className="text-xl mt-2 p-2 bg-gray-300 text-white rounded-md ">
+                  <p className="bg-primary_color text-secondary_text_color text-xl mt-2 p-2 border border-transparent hover:bg-transparent hover:border-primary_color hover:text-primary_color smooth_transition rounded-md ">
                     Upload photo
                   </p>
                 ) : (
                   <p>{formFields.profileImg.name}</p>
                 )}
                 <input
-                  className=" absolute  top-2  -translate-x-[5%] cursor-pointer opacity-0"
+                  className={` absolute  top-5  -translate-x-[5%] ${
+                    formFields.profileImg.url.length > 0 && "hidden"
+                  } cursor-pointer opacity-0 hover:cursor-pointer`}
                   type="file"
                   name="file_upload"
                   onChange={(event) => handleFileUpload(event)}
@@ -262,7 +264,7 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
                     });
                   }}
                 >
-                  Cancel upload
+                  Remove picture
                 </p>
               )}
             </div>

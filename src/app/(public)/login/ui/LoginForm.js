@@ -37,7 +37,7 @@ const LoginForm = ({ handleLoginPrompt }) => {
     <Fragment>
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-3  ">
-          <label className="font-semibold" htmlFor="username">
+          <label className="font-semibold text-white" htmlFor="username">
             Username/E-mail:
           </label>
           <div className="flex justify-between items-center gap-5 border-2 pr-2 bg-white shadow-sm rounded-sm">
@@ -67,13 +67,13 @@ const LoginForm = ({ handleLoginPrompt }) => {
             )}
           </div>
           {formInput.username.error && (
-            <p className="-mt-3 text-right pr-2 text-xs text-red-900">
+            <p className="-mt-3 text-right pr-2 text-xs text-red-200">
               Please make sure your input is correct
             </p>
           )}
         </div>
         <div className="flex flex-col gap-3  ">
-          <label className="font-semibold" htmlFor="password">
+          <label className="font-semibold text-white" htmlFor="password">
             Password
           </label>
           <div className="flex justify-between items-center gap-5 border-2 pr-2 bg-white shadow-sm rounded-sm">
@@ -102,7 +102,7 @@ const LoginForm = ({ handleLoginPrompt }) => {
             )}
           </div>
           {formInput.username.error && (
-            <p className="-mt-3 text-right pr-2 text-xs text-red-900">
+            <p className="-mt-3 text-right pr-2 text-xs text-red-200">
               Please make sure your input is correct
             </p>
           )}
