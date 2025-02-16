@@ -3,13 +3,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import Button from "../../Button";
 import { useRouter } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
-
 import Modal from "@/components/modal/Modal";
 import { TiWarning } from "react-icons/ti";
 import Link from "next/link";
-
 import UserForm from "./UserForm";
-import { addUser, getAllUsers } from "@/utils/user";
+import { addUser, deleteUser, getAllUsers, updateUser } from "@/utils/user";
 
 const ManageUsers = () => {
   const [allUsers, setAllUsers] = useState({
@@ -32,7 +30,7 @@ const ManageUsers = () => {
   allUsers.array.length > 0 && searchInput === ""
     ? (newArr = [...allUsers.array])
     : allUsers.array.forEach((user) => {
-        user.name.toLowerCase().includes(searchInput) && newArr.push(user);
+        user.username.toLowerCase().includes(searchInput) && newArr.push(user);
       });
 
   useEffect(() => {
@@ -59,11 +57,27 @@ const ManageUsers = () => {
     getUsers();
   }, [modalToggle.delete, modalToggle.add, modalToggle.edit]);
 
-  const deleteHandler = () => {
-    console.log(selectedOption);
+  const deleteHandler = async () => {
+    const response = await deleteUser(selectedOption.id);
+    if (!response) {
+      alert("Unable to delete user");
+      return null;
+    }
+
+    alert(`${selectedOption.username} deleted successfully`);
+
+    setModalToggle({ ...modalToggle, delete: false });
   };
-  const editHandler = (formInput) => {
-    console.log(formInput);
+  const editHandler = async (formInput) => {
+    const response = await updateUser(formInput, selectedOption.id);
+    if (!response) {
+      alert("Unable to update user profile");
+      return null;
+    }
+
+    alert(`${selectedOption.username} updated successfully`);
+
+    setModalToggle({ ...modalToggle, edit: false });
   };
   const addHandler = async (formInput) => {
     const response = await addUser(formInput);

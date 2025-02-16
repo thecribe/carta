@@ -83,7 +83,7 @@ const DisplayFellows = ({ allFellow }) => {
                             {fellow.email}
                           </td>
                           <td className="py-3 px-5  items-center">
-                            {fellow.faculty + "/" + fellow.institution.name}
+                            {fellow.faculty + "/" + fellow.institutionId}
                           </td>
                           <td className="py-3 px-5  items-center">
                             {fellow.department}

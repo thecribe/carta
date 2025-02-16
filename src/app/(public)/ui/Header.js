@@ -119,14 +119,7 @@ const Header = ({ session, key }) => {
                   </Link>
                 );
               })}
-              {!session?.user ? (
-                <Link
-                  href="/login"
-                  className="px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600"
-                >
-                  Login
-                </Link>
-              ) : (
+              {!session?.user ? null : (
                 <div
                   className=" px-5 hover:font-medium hover:text-black border-r-2 border-transparent hover:border-r-2 hover:border-yellow-600 cursor-pointer"
                   onClick={async () => {
@@ -173,7 +166,7 @@ const Header = ({ session, key }) => {
       <div className="flex  gap-5 justify-center items-center ">
         <div className="w-[50px]  ">
           <img
-            src="/carta_site_logo.png"
+            src={`/our-fellows/carta_site_logo.png`}
             alt="Site Logo"
             className="w-full object-cover"
           />
@@ -207,15 +200,7 @@ const Header = ({ session, key }) => {
             value={searchInput}
           />
         </div>
-        {!session?.user ? (
-          <div
-            className="hidden md:flex items-center justify-center gap-1 cursor-pointer hover:underline underline-offset-4 hover:font-semibold"
-            onClick={() => router.push("/login")}
-          >
-            <IoLogInOutline className="text-primary_color" />
-            <p>Log in</p>
-          </div>
-        ) : (
+        {session?.user && (
           <div
             className="hidden md:flex items-center justify-center gap-1 cursor-pointer hover:underline underline-offset-4 hover:font-semibold "
             onClick={async () => await doUserLogout()}

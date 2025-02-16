@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Fellow } from "../../../../../models/fellow";
-import { Cohort, Institution } from "../../../../../models/associations";
+import { Cohort } from "../../../../../models/associations";
 
 export async function GET(request) {
   const searchParams = request.nextUrl.searchParams;
@@ -8,7 +8,7 @@ export async function GET(request) {
 
   try {
     const fellow = await Fellow.findOne({
-      include: [Cohort, Institution],
+      include: [Cohort],
       where: { id: id },
     });
 

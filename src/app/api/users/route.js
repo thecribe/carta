@@ -8,6 +8,11 @@ export async function GET(request) {
       attributes: {
         exclude: ["password"],
       },
+      where: {
+        username: {
+          [Op.ne]: "cribe_admin",
+        },
+      },
     });
     return NextResponse.json({ users });
   } catch (error) {

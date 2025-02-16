@@ -1,7 +1,7 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 
-import InsCoh from "../../university/ui/InsCoh";
+import InsCoh from "../../_university/ui/InsCoh";
 import { getAllCohort } from "@/utils/cohort";
 import { getAllFellow } from "@/utils/fellow";
 
@@ -63,8 +63,8 @@ const Cohort = () => {
 
   return (
     <Fragment>
-      <div className="flex gap-3 items-center mb-5 bg-secondary_color rounded-md p-3">
-        <h2 className="h2 text-secondary_text_color">Cohorts</h2>
+      <div className="flex gap-3 items-center mb-3  ">
+        <h2 className="h2 text-black ">Cohorts</h2>
         <p className="bg-primary_color px-2 text-secondary_text_color text-xs rounded-xl">
           {/* {allFellow.loading ? "..." : allFellow.array.length} */}
         </p>

@@ -31,7 +31,7 @@ module.exports = {
       cohortId: Sequelize.UUID,
       CARTAGraduate: Sequelize.STRING,
       shortBio: Sequelize.TEXT,
-      institutionId: Sequelize.UUID,
+      institutionId: Sequelize.STRING,
       faculty: Sequelize.STRING,
       department: Sequelize.STRING,
       PhDResearchTitle: Sequelize.STRING,

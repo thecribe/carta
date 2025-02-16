@@ -57,7 +57,6 @@ const UserForm = ({ type, userDetails, handleFormSubmission }) => {
         });
       }
     } else {
-      console.log(newErrorObj);
       if (passwordControl) {
         if (newErrorObj.username || newErrorObj.password || newErrorObj.email) {
           setFormFields({
@@ -76,7 +75,7 @@ const UserForm = ({ type, userDetails, handleFormSubmission }) => {
             },
           });
         } else {
-          console.log(formFields);
+          handleFormSubmission(formFields);
         }
       } else {
         if (newErrorObj.username || newErrorObj.email) {
@@ -92,11 +91,10 @@ const UserForm = ({ type, userDetails, handleFormSubmission }) => {
             },
           });
         } else {
-          console.log(formFields);
+          handleFormSubmission(formFields);
         }
       }
     }
-    // handleFormSubmission(formFields);
   };
 
   return (
@@ -172,7 +170,7 @@ const UserForm = ({ type, userDetails, handleFormSubmission }) => {
 
         {!type && (
           <div className="flex flex-col gap-3  ">
-            <label className="font-semibold" htmlFor="username">
+            <label className="font-semibold" htmlFor="password">
               Password
             </label>
             <div className="flex justify-between items-center gap-5 border-2 pr-2 bg-white shadow-sm rounded-sm">

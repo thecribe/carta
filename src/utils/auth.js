@@ -69,5 +69,5 @@ export const userValidation = async (username, password) => {
   }
 };
 export const doUserLogout = async () => {
-  await signOut({ redirectTo: "/directory" });
+  await signOut({ redirectTo: "/our-fellows/directory" });
 };

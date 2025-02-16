@@ -4,11 +4,12 @@
 
 :root {
   --primary_color: #eaaa00;
-  --secondary_color: #4c3e00;
+  --secondary_color: #3b330c;
   --primary_text_color: black;
   --secondary_text_color: white;
   --main_background: #f3f4f6;
 }
+/* --secondary_color: #746318; */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -18,6 +19,7 @@
 } */
 * html {
   scroll-behavior: smooth;
+  font-size: 26px !important;
 }
 
 body {

@@ -69,6 +69,8 @@ const ManageCohorts = () => {
 
     if (!response) {
       alert("Unable to delete cohort. Please try again!");
+      setModalToggle({ ...modalToggle, delete: false });
+      return null;
     }
     alert("Cohort deleted successfully");
     setModalToggle({ ...modalToggle, delete: false });
@@ -212,35 +214,38 @@ const ManageCohorts = () => {
                             <p className=" capitalize hover:underline underline-offset-2 font-semibold">
                               {cohort.cohort}
                             </p>
-                            <div className=" edit-panel hidden py-1">
-                              <div className="flex gap-1 items-center">
-                                <Link
-                                  href={`/dashboard/manage-cohorts?edit=${cohort.id}`}
-                                  className="text-xs mr-2 hover:underline underline-offset-2"
-                                  onClick={() => {
-                                    setSelectedOption(cohort);
-                                    setModalToggle({
-                                      ...modalToggle,
-                                      edit: true,
-                                    });
-                                  }}
-                                >
-                                  Edit
-                                </Link>
-                                <p
-                                  className="text-xs mr-2 hover:underline underline-offset-2"
-                                  onClick={() => {
-                                    setSelectedOption(cohort);
-                                    setModalToggle({
-                                      ...modalToggle,
-                                      delete: true,
-                                    });
-                                  }}
-                                >
-                                  Delete
-                                </p>
+                            {cohort.id !==
+                              "f1494fec-5d20-454c-af45-af44a01216d0" && (
+                              <div className=" edit-panel hidden py-1">
+                                <div className="flex gap-1 items-center">
+                                  <Link
+                                    href={`/dashboard/manage-cohorts?edit=${cohort.id}`}
+                                    className="text-xs mr-2 hover:underline underline-offset-2"
+                                    onClick={() => {
+                                      setSelectedOption(cohort);
+                                      setModalToggle({
+                                        ...modalToggle,
+                                        edit: true,
+                                      });
+                                    }}
+                                  >
+                                    Edit
+                                  </Link>
+                                  <p
+                                    className="text-xs mr-2 hover:underline underline-offset-2"
+                                    onClick={() => {
+                                      setSelectedOption(cohort);
+                                      setModalToggle({
+                                        ...modalToggle,
+                                        delete: true,
+                                      });
+                                    }}
+                                  >
+                                    Delete
+                                  </p>
+                                </div>
                               </div>
-                            </div>
+                            )}
                           </div>
                         </td>
                         <td className="py-3 px-5  items-center">

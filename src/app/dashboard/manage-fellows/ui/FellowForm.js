@@ -87,17 +87,14 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
 
       await getAllCohort()
         .then(async (response1) => {
-          const response2 = await getAllInstitution();
           data = {
             ...data,
             cohorts: [...initialData.cohorts, ...response1.cohorts],
-            institutions: [
-              ...initialData.institutions,
-              ...response2.institutions,
-            ],
           };
         })
-        .then(() => {});
+        .catch((error) => {
+          console.log("error");
+        });
 
       setInitialData({ ...data });
     };
@@ -338,20 +335,20 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
             <label className="font-semibold" htmlFor="university">
               University:
             </label>
-            <select
+            <input
+              type="text"
               id="university"
+              name="university"
+              placeholder="Enter your Institution"
               value={formFields.institutionId}
               onChange={(e) =>
-                setFormFields({ ...formFields, institutionId: e.target.value })
+                setFormFields({
+                  ...formFields,
+                  institutionId: e.target.value,
+                })
               }
-              className="border-2 rounded-sm shadow-sm p-2 w-2/3 capitalize"
-            >
-              {initialData.institutions.map((university, index) => (
-                <option key={index} value={university.id}>
-                  {university.name}
-                </option>
-              ))}
-            </select>
+              className="outline-none border-2 md:w-2/3 p-2 rounded-sm shadow-sm mb-2 text-sm"
+            />
           </div>
           <div className="flex flex-col gap-3 ">
             <label className="font-semibold" htmlFor="faculty">
@@ -497,6 +494,10 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
             <label className="font-semibold" htmlFor="ORCIDNumber">
               ORCID Number
             </label>
+            <p className="text-xs text-gray-600">
+              Please enter the full link. e.g.
+              https://orcid.org/0000-0001-2345-6789{" "}
+            </p>
             <input
               type="text"
               id="ORCIDNumber"
@@ -516,6 +517,10 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
             <label className="font-semibold" htmlFor="googleScholarProfile">
               Google Scholar link
             </label>
+            <p className="text-xs text-gray-600">
+              Please enter the full link. e.g.
+              https://scholar.google.com/citations?user=abcd1234{" "}
+            </p>
             <input
               type="text"
               id="googleScholarProfile"
@@ -535,6 +540,10 @@ const FellowForm = ({ type, fellowDetails, handleFormSubmission }) => {
             <label className="font-semibold" htmlFor="researchGateProfile">
               ResearchGate link
             </label>
+            <p className="text-xs text-gray-600">
+              Please enter the full link. e.g.
+              https://www.researchgate.net/profile/John-Doe{" "}
+            </p>
             <input
               type="text"
               id="researchGateProfile"

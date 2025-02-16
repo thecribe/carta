@@ -53,7 +53,6 @@ export const editCohort = async (forminput, id) => {
 export const deleteCohort = async (id) => {
   try {
     const response = await axios.delete(`/api/cohort?id=${id}`);
-
     return response.data;
   } catch (error) {
     return false;

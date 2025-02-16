@@ -28,7 +28,7 @@ export const Fellow = sequelize.define(
     },
     CARTAGraduate: DataTypes.STRING,
     shortBio: DataTypes.TEXT,
-    institutionId: DataTypes.UUID,
+    institutionId: DataTypes.STRING,
     faculty: DataTypes.STRING,
     department: DataTypes.STRING,
     PhDResearchTitle: DataTypes.STRING,

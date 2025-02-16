@@ -8,10 +8,10 @@ export const siderNav = [
     menu: "Fellows",
     link: "/directory/fellows",
   },
-  {
-    menu: "Institutions",
-    link: "/directory/university",
-  },
+  // {
+  //   menu: "Institutions",
+  //   link: "/directory/university",
+  // },
 
   {
     menu: "Cohorts",
@@ -21,7 +21,7 @@ export const siderNav = [
 export const adminNav = [
   { menu: "Manage Fellows", link: "/dashboard/manage-fellows" },
   { menu: "Manage Cohorts", link: "/dashboard/manage-cohorts" },
-  { menu: "Manage Institution", link: "/dashboard/manage-institution" },
+  // { menu: "Manage Institution", link: "/dashboard/manage-institution" },
   { menu: "Manage Users", link: "/dashboard/manage-users" },
 ];
 

@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { validate } from "./formValidation";
+var bcrypt = require("bcryptjs");
 axios.defaults.baseURL = process.env.API_REQUEST_BASE_URL;
 
 export const getAllUsers = async () => {
@@ -43,6 +44,52 @@ export const addUser = async (forminput) => {
       ...response.data,
       user: { ...response.data.user, password: null },
     };
+  } catch (error) {
+    return false;
+  }
+};
+
+export const updateUser = async (forminput, id) => {
+  let username = forminput.username.username.trim();
+  let email = forminput.email.email.trim();
+
+  if (!!forminput.password.password) {
+    //HashPassword
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(
+      forminput.password.password.trim(),
+      salt
+    );
+
+    try {
+      const response = await axios.put(`/api/users?userId=${id}`, {
+        username,
+        email,
+        password: hashedPassword,
+      });
+
+      return response.data;
+    } catch (error) {
+      return false;
+    }
+  } else {
+    try {
+      const response = await axios.put(`/api/users?userId=${id}`, {
+        username,
+        email,
+      });
+      return response.data;
+    } catch (error) {
+      return false;
+    }
+  }
+};
+
+export const deleteUser = async (id) => {
+  try {
+    const response = await axios.delete(`/api/users?userId=${id}`);
+
+    return response.data;
   } catch (error) {
     return false;
   }

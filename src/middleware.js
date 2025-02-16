@@ -23,12 +23,12 @@ export async function middleware(request) {
 
   if (!isAuthenticated && !isPublicRoute) {
     // await doUserLogout();
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/our-fellows/login", request.url));
   }
 
   if (isAuthenticated && nextUrl.pathname === LOGIN) {
     return NextResponse.redirect(
-      new URL("/dashboard/manage-fellows", request.url)
+      new URL("/our-fellows/dashboard/manage-fellows", request.url)
     );
   }
 
@@ -37,7 +37,9 @@ export async function middleware(request) {
     nextUrl.pathname === "/dashboard" ||
     nextUrl.pathname === ROOT
   ) {
-    return NextResponse.redirect(new URL("/directory/fellows", request.url));
+    return NextResponse.redirect(
+      new URL("/our-fellows/directory/fellows", request.url)
+    );
   }
 }
 // See "Matching Paths" below to learn more

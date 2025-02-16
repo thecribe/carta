@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { Cohort } from "../../../../models/cohort";
+import { Fellow } from "../../../../models/fellow";
 
 export async function GET(request) {
   try {
@@ -57,18 +58,36 @@ export async function DELETE(request) {
   const searchParams = request.nextUrl.searchParams;
   const id = searchParams.get("id");
 
-  try {
-    const deleteResponse = await Cohort.destroy({
-      where: {
-        id: id,
-      },
-    });
-
-    return NextResponse.json({ deleteResponse });
-  } catch (error) {
+  if (id === "f1494fec-5d20-454c-af45-af44a01216d0") {
     return NextResponse.json(
-      { message: "Request failed", status: false },
+      { message: "Can't delete this cohort", status: false },
       { status: 400 }
     );
+  } else {
+    try {
+      const update = await Fellow.update(
+        { cohortId: "f1494fec-5d20-454c-af45-af44a01216d0" },
+        {
+          where: {
+            cohortId: id,
+          },
+        }
+      );
+      console.log(update);
+      if (update) {
+        const deleteResponse = await Cohort.destroy({
+          where: {
+            id: id,
+          },
+        });
+
+        return NextResponse.json({ deleteResponse });
+      }
+    } catch (error) {
+      return NextResponse.json(
+        { message: "Request failed", status: false },
+        { status: 400 }
+      );
+    }
   }
 }

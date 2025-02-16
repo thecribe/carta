@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/app/dashboard/Button";
 import { validate } from "@/utils/formValidation";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { MdError } from "react-icons/md";
 
 const LoginForm = ({ handleLoginPrompt }) => {
@@ -9,6 +9,21 @@ const LoginForm = ({ handleLoginPrompt }) => {
     username: { username: "", error: false },
     password: { password: "", error: false },
   });
+
+  useEffect(() => {
+    const handleKeyPress = async (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        await handleSubmitValidation();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [formInput.username, formInput.password]);
 
   const handleSubmitValidation = async () => {
     let validationObj = { username: false, password: false };
@@ -33,6 +48,7 @@ const LoginForm = ({ handleLoginPrompt }) => {
       });
     }
   };
+
   return (
     <Fragment>
       <div className="flex flex-col gap-5">

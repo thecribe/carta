@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { Fellow } from "../../../../models/fellow";
-import { Cohort, Institution } from "../../../../models/associations";
+import { Cohort } from "../../../../models/associations";
 
 export async function GET(request) {
   const searchParams = request.nextUrl.searchParams;
@@ -12,18 +12,18 @@ export async function GET(request) {
     if (type) {
       if (type === "institution") {
         fellows = await Fellow.findAll({
-          include: [Cohort, Institution],
+          include: [Cohort],
           where: { institutionId: query },
         });
       } else if (type === "cohort") {
         fellows = await Fellow.findAll({
-          include: [Cohort, Institution],
+          include: [Cohort],
           where: { cohortId: query },
         });
       }
     } else {
       fellows = await Fellow.findAll({
-        include: [Cohort, Institution],
+        include: [Cohort],
       });
     }
     return NextResponse.json({ fellows });

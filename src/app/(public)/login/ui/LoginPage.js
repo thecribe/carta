@@ -50,7 +50,9 @@ const LoginPage = () => {
       )}
       <p
         className="text-sm text-center text-blue-900 underline underline-offset-4 cursor-pointer"
-        onClick={() => router.push("/directory")}
+        onClick={() => {
+          router.push("/directory");
+        }}
       >
         Return to directory page
       </p>

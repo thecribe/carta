@@ -18,7 +18,13 @@ const ManageTable = ({ data, editLink }) => {
   data.array.length > 0 && searchInput === ""
     ? (newArr = [...data.array])
     : data.array.forEach((fellow) => {
-        (fellow.name.firstname + " " + fellow.name.lastname)
+        (
+          fellow.name.surname +
+          " " +
+          fellow.name.firstname +
+          " " +
+          fellow.name.othername
+        )
           .toLowerCase()
           .includes(searchInput) && newArr.push(fellow);
       });
@@ -100,12 +106,7 @@ const ManageTable = ({ data, editLink }) => {
                     <td className="py-3 px-5  items-center">{fellow.email}</td>
                     <td className="py-3 px-5  items-center">
                       {fellow.faculty} /{" "}
-                      <a
-                        href={fellow.institution.website}
-                        className="underline text-blue-700 cursor-pointer"
-                      >
-                        {fellow.institution.name}
-                      </a>
+                      <a className="">{fellow.institutionId}</a>
                     </td>
                     <td className="py-3 px-5  items-center">
                       {fellow.cohort.cohort}

@@ -18,6 +18,8 @@ export const fileUploadhandler = async (formData) => {
 
   const domain_name = headersList.get("origin");
 
+  console.log(domain_name, "Testing domain");
+
   console.log(domain_name);
   //check if directory is available if not create it.
   if (!fs.existsSync(dir)) {
@@ -38,7 +40,7 @@ export const fileUploadhandler = async (formData) => {
 
     return {
       status: true,
-      img_url: `${domain_name}/static/images/${filename}`,
+      img_url: `${domain_name}/our-fellows/static/images/${filename}`,
       name: filename,
     };
   } catch (error) {

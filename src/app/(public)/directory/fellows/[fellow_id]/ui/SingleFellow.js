@@ -45,32 +45,31 @@ const SingleFellow = ({ id }) => {
       {!fellowDetails.loading ? (
         !fellowDetails.error ? (
           <div className="h-full w-full">
-            <div className="h-full w-full hidden md:block overflow-y-auto">
-              <div className=" bg-white p-8 flex flex-col gap-5">
+            <div className="h-full w-full hidden md:block overflow-hidden">
+              <div className=" bg-secondary_color p-8 flex flex-col gap-5">
                 <div>
-                  <h2 className="h2 uppercase text-secondary_color">
+                  <h2 className="h2 uppercase text-white">
                     {fellow.name.surname +
                       " " +
                       fellow.name.firstname +
                       " " +
                       fellow.name.othername}
                   </h2>
-                  <p className="capitalize">{fellow.position}</p>
+                  <p className="capitalize text-white">{fellow.position}</p>
                 </div>
-                <div className="text-xs capitalize">
+                <div className="text-xs capitalize text-white">
                   <p>{fellow.faculty}</p>
                   <p>{fellow.department}</p>
-                  <p>{fellow.university}</p>
+                  <p>{fellow.institutionId}</p>
                 </div>
                 <div className="flex gap-5 items-center text-xs">
-                  {fellow.ORCIDNumber.includes("http") ? (
-                    <a
-                      href={fellow.ORCIDNumber}
-                      className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
-                    >
-                      ORCID Number
-                    </a>
-                  ) : null}
+                  <a
+                    href={fellow.ORCIDNumber === "" ? "#" : fellow.ORCIDNumber}
+                    className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
+                  >
+                    ORCID Number
+                  </a>
+
                   <a
                     href={
                       fellow.googleScholarProfile === ""
@@ -93,8 +92,8 @@ const SingleFellow = ({ id }) => {
                   </a>
                 </div>
               </div>
-              <div className="h-[74%]   p-8 w-full xl:w-4/5  flex gap-5">
-                <div className="h-full overflow-y-auto scrolling w-1/2 lg:w-3/4 flex flex-col gap-5">
+              <div className="h-[74%]  w-full xl:w-5/6 flex justify-between gap-5">
+                <div className="h-full overflow-y-auto py-8  scrolling w-1/2 md:w-3/4  flex flex-col gap-5">
                   <div>
                     <h3 className="font-semibold text-secondary_color w-full border-b-2 pb-2 uppercase">
                       Contact Details
@@ -180,11 +179,15 @@ const SingleFellow = ({ id }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-1/2 lg:w-1/4 h-full -mt-48 flex flex-col gap-5">
+                <div className="w-1/2 md:w-1/4 h-full -mt-44 flex flex-col gap-5">
                   <div className=" w-full flex flex-col   shadow-sm bg-white rounded-md">
                     <div className="w-full h-[300px]  ">
                       <img
-                        src={fellow.profileImg.url}
+                        src={
+                          fellow.profileImg.url !== ""
+                            ? fellow.profileImg.url
+                            : "/our-fellows/placeholder.png"
+                        }
                         className="w-full h-full object-cover rounded-md"
                       />
                     </div>
@@ -199,58 +202,68 @@ const SingleFellow = ({ id }) => {
                     </div>
                   </div>
                   <div className="w-full bg-white p-5 shadow-sm flex flex-col gap-5 ">
-                    <div className="flex justify-between items-center">
-                      <p className="text-black ">CARTA Cohort</p>
+                    <div className="flex items-center">
+                      <p className="text-black w-1/2 ">CARTA Cohort</p>
                       <p className="text-xs">{fellow.cohort.cohort}</p>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-black ">CARTA Graduate</p>
+                    <div className="flex  items-center">
+                      <p className="text-black w-1/2 ">CARTA Graduate</p>
                       <p className="text-xs capitalize">
                         {fellow.CARTAGraduate ? "Yes" : "no"}
                       </p>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-black ">ORCID Number</p>
-                      <p className="text-xs">{fellow.ORCIDNumber}</p>
-                    </div>
+                    {/* <div className="flex  items-center">
+                      <p className="text-black w-1/2 ">ORCID Number</p>
+                      <a
+                        href={fellow.ORCIDNumber}
+                        className="text-xs cursor-pointer hover:underline underline-offset-2"
+                      >
+                        {fellow.ORCIDNumber}
+                      </a>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
 
             <div className=" w-full md:hidden p-2 flex flex-col gap-5">
-              <div className="w-full bg-white  flex flex-col gap-2 justify-center items-center p-5">
+              <div className="w-full bg-secondary_color flex flex-col gap-2 justify-center items-center p-5">
                 <div className="w-[150px] h-[150px]">
                   <img
-                    src={fellow.profileImg.url}
+                    src={
+                      fellow.profileImg.url !== ""
+                        ? fellow.profileImg.url
+                        : "/our-fellows/placeholder.png"
+                    }
                     alt={fellow.profileImg.name}
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
                 <div className="w-full">
-                  <h2 className="h2 uppercase text-center text-secondary_color ">
+                  <h2 className="h2 uppercase text-center text-white ">
                     {fellow.name.surname +
                       " " +
                       fellow.name.firstname +
                       " " +
                       fellow.name.othername}
                   </h2>
-                  <p className="capitalize text-center">{fellow.position}</p>
+                  <p className="capitalize text-center text-white">
+                    {fellow.position}
+                  </p>
                 </div>
-                <div className="flex justify-center items-center divide-x-2  text-xs capitalize">
-                  <p className="px-1">{fellow.faculty}</p>
-                  <p className="px-1">{fellow.department}</p>
+                <div className="text-white flex justify-center items-center divide-x-2  text-xs capitalize">
+                  <p className="px-1 text-white">{fellow.faculty}</p>
+                  <p className="px-1 text-white">{fellow.department}</p>
                 </div>
-                <p>{fellow.institution.name}</p>
+                <p className="text-white">{fellow.institutionId}</p>
                 <div className="flex flex-wrap gap-3 justify-center items-center text-xs mt-5">
-                  {fellow.ORCIDNumber.includes("http") ? (
-                    <a
-                      href={fellow.ORCIDNumber}
-                      className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
-                    >
-                      ORCID Number
-                    </a>
-                  ) : null}
+                  <a
+                    href={fellow.ORCIDNumber === "" ? "#" : fellow.ORCIDNumber}
+                    className="hover:border-primary_color hover:bg-white hover:text-primary_color border border-transparent bg-primary_color text-secondary_text_color px-2 py-1 smooth transition shadow-sm"
+                  >
+                    ORCID Number
+                  </a>
+
                   <a
                     href={
                       fellow.googleScholarProfile === ""
@@ -289,10 +302,6 @@ const SingleFellow = ({ id }) => {
                       <p className="text-xs capitalize">
                         {fellow.CARTAGraduate ? "Yes" : "no"}
                       </p>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="">ORCID Number</p>
-                      <p className="text-xs">{fellow.ORCIDNumber}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-3">

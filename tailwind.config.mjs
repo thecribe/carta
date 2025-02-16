@@ -14,6 +14,12 @@ export default {
         secondary_text_color: "var(--secondary_text_color)",
         main_background: "var(--main_background)",
       },
+      fontSize: {
+        xs: "0.9rem",
+        sm: "1.0rem",
+        base: "1.2rem",
+        lg: "1.3rem",
+      },
     },
   },
   plugins: [],

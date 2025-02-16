@@ -13,7 +13,11 @@ const ProfileCard = ({ fellow }) => {
       <div className="flex flex-col gap-3 border rounded-md shadow-sm p-5 ">
         <div className=" w-[150px] h-[150px]">
           <img
-            src={fellow.profileImg.url}
+            src={
+              fellow.profileImg.url !== ""
+                ? fellow.profileImg.url
+                : "/our-fellows/placeholder.png"
+            }
             alt={fellow.profileImg.name}
             className="w-full h-full object-cover rounded-tr-lg rounded-bl-lg "
           />
